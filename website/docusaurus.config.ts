@@ -46,6 +46,9 @@ const config: Config = {
           ],
         },
         blog: false,
+        gtag: {
+          trackingID: 'G-KKCJ2EYDXK',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
