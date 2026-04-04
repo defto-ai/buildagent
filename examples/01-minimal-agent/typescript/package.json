@@ -1,0 +1,16 @@
+{
+  "name": "minimal-agent",
+  "version": "1.0.0",
+  "description": "Minimal AI Agent example - demonstrates the core loop",
+  "main": "agent.ts",
+  "scripts": {
+    "start": "tsx agent.ts",
+    "dev": "tsx watch agent.ts"
+  },
+  "keywords": ["ai", "agent", "llm"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tsx": "^4.7.0"
+  }
+}
