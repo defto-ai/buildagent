@@ -1,11 +1,25 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+  background: var(--ifm-background-color);
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.features h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.features p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ifm-color-emphasis-700);
 }

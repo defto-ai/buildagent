@@ -55,26 +55,95 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--ifm-heading-font-family);
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* Code blocks - JetBrains Mono */
 code {
   font-family: var(--ifm-font-family-monospace);
   font-size: var(--ifm-code-font-size);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
 }
 
 /* Smooth reading experience */
 article {
   font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+article ul, article ol {
+  margin-bottom: 1.2rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
 }
 
 /* Links */
 a {
   font-weight: 500;
   transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 a:hover {
   text-decoration: none;
   opacity: 0.8;
+}
+
+/* Buttons */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Code blocks */
+.prism-code {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Tables */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+
+/* TOC */
+.table-of-contents {
+  font-size: 0.9rem;
+}
+
+.table-of-contents li {
+  margin: 0.5rem 0;
+}
+
+/* Improve Chinese font rendering */
+html[lang="zh-CN"] {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
