@@ -1,233 +1,235 @@
 # Build Agent
 
-> 如何把 LLM 的智能放大 100 倍？我们拆解了 Claude Code 和 Codex 的 100 万行代码，找到了答案。
+[中文](README.zh-CN.md) | English
+
+> How to amplify LLM intelligence by 100x? We analyzed 1 million lines of code from Claude Code and Codex to find the answer.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/website-buildagent.dev-green.svg)](https://buildagent.dev)
 
-## 🎯 这是什么？
+## 🎯 What is this?
 
-**Claude Code** (Anthropic, 54 万行 TypeScript) 和 **Codex** (OpenAI, 46 万行 Rust) 是目前最强的两个 AI Agent 产品。
+**Claude Code** (Anthropic, 540K lines TypeScript) and **Codex** (OpenAI, 467K lines Rust) are the two most powerful AI Agent products.
 
-我们逐行分析了这 100 万行代码，揭示了 **AI Agent 如何将 LLM 智能放大 100 倍** 的秘密。
+We analyzed this 1 million lines of code line-by-line, revealing the secret of **how AI Agents amplify LLM intelligence by 100x**.
 
-## 💡 核心洞察
+## 💡 Core Insights
 
 ### Agent ≠ LLM
 
 ```
-ChatGPT：只能"建议"，不能"执行"
-Agent：能独立完成完整任务
+ChatGPT: Can only "suggest", cannot "execute"
+Agent: Can independently complete full tasks
 
-差距：100 倍效率
+Gap: 100x efficiency
 ```
 
-### 智能放大公式
+### Intelligence Amplification Formula
 
 ```
-Agent 智能 = LLM 智能 × 工具 × 循环 × 上下文 × System Prompt
-           = 100 × 10 × 5 × 2 × 1.5
-           = 15,000 分（150 倍放大）
+Agent Intelligence = LLM Intelligence × Tools × Loops × Context × System Prompt
+                   = 100 × 10 × 5 × 2 × 1.5
+                   = 15,000 points (150x amplification)
 ```
 
-### 关键发现
+### Key Findings
 
-1. **智能放大是乘法，不是加法**
-2. **瓶颈是系统，不是模型**
-3. **GPT-3.5 + 完整系统 > GPT-4 单独**
-4. **下一个 10 倍在系统，不在模型**
+1. **Intelligence amplification is multiplication, not addition**
+2. **Bottleneck is system, not model**
+3. **GPT-3.5 + complete system > GPT-4 alone**
+4. **Next 10x is in system, not in model**
 
-## 📚 文档结构
+## 📚 Documentation Structure
 
-### [Part 0: 认知基础](docs/00-cognitive-foundation/) (3 篇)
+### [Part 0: Cognitive Foundation](docs/00-cognitive-foundation/) (3 articles)
 
-建立对 AI Agent 智能本质的深刻理解
+Build deep understanding of AI Agent intelligence essence
 
-- [00. 什么是智能？](docs/00-cognitive-foundation/00-what-is-intelligence.md) - 完整闭环定义
-- [01. Agent 智能的本质](docs/00-cognitive-foundation/01-agent-intelligence-essence.md) - 智能放大公式
-- [02. 五大机制的深层原理](docs/00-cognitive-foundation/02-five-mechanisms-principles.md) - 信息论、控制论
+- [00. What is Intelligence?](docs/00-cognitive-foundation/00-what-is-intelligence.md) - Complete loop definition
+- [01. Essence of Agent Intelligence](docs/00-cognitive-foundation/01-agent-intelligence-essence.md) - Amplification formula
+- [02. Deep Principles of Five Mechanisms](docs/00-cognitive-foundation/02-five-mechanisms-principles.md) - Information theory, control theory
 
-### [Part 1: 失败案例](docs/01-failure-cases/) (5 篇)
+### [Part 1: Failure Cases](docs/01-failure-cases/) (5 articles)
 
-从失败中学习，理解每个机制的必要性
+Learn from failures, understand necessity of each mechanism
 
-- [03. 没有工具会怎样？](docs/01-failure-cases/03-without-tools.md) - 效率降低 10-20 倍
-- [04. 没有循环会怎样？](docs/01-failure-cases/04-without-loops.md) - 3272 压缩失败案例
-- [05. 没有上下文会怎样？](docs/01-failure-cases/05-without-context.md) - 50% 返工率
-- [06. 没有 System Prompt 会怎样？](docs/01-failure-cases/06-without-system-prompt.md) - 50% 可靠性
-- [07. 没有压缩会怎样？](docs/01-failure-cases/07-without-compression.md) - 2 小时对话限制
+- [03. Without Tools?](docs/01-failure-cases/03-without-tools.md) - 10-20x efficiency drop
+- [04. Without Loops?](docs/01-failure-cases/04-without-loops.md) - Case 3272 compression failure
+- [05. Without Context?](docs/01-failure-cases/05-without-context.md) - 50% rework rate
+- [06. Without System Prompt?](docs/01-failure-cases/06-without-system-prompt.md) - 50% reliability
+- [07. Without Compression?](docs/01-failure-cases/07-without-compression.md) - 2-hour conversation limit
 
-### [Part 2: 设计决策](docs/02-design-decisions/) (5 篇)
+### [Part 2: Design Decisions](docs/02-design-decisions/) (5 articles)
 
-深入理解关键设计决策背后的原因
+Deep dive into reasons behind key design decisions
 
-- [08. 为什么是 3 次重试？](docs/02-design-decisions/08-why-circuit-breaker.md) - 断路器设计
-- [09. 为什么要工具分类？](docs/02-design-decisions/09-why-tool-classification.md) - 并发安全
-- [10. 为什么分段缓存？](docs/02-design-decisions/10-why-segmented-caching.md) - 90% 成本节省
-- [11. 为什么是 5 种权限模式？](docs/02-design-decisions/11-why-five-permission-modes.md) - 用户分布
-- [12. 为什么是 75% 阈值？](docs/02-design-decisions/12-why-75-percent-threshold.md) - 压缩时机
+- [08. Why 3 Retries?](docs/02-design-decisions/08-why-circuit-breaker.md) - Circuit breaker design
+- [09. Why Tool Classification?](docs/02-design-decisions/09-why-tool-classification.md) - Concurrency safety
+- [10. Why Segmented Caching?](docs/02-design-decisions/10-why-segmented-caching.md) - 90% cost savings
+- [11. Why 5 Permission Modes?](docs/02-design-decisions/11-why-five-permission-modes.md) - User distribution
+- [12. Why 75% Threshold?](docs/02-design-decisions/12-why-75-percent-threshold.md) - Compression timing
 
-### [Part 3: 深度对比](docs/03-deep-comparison/) (10 篇)
+### [Part 3: Deep Comparison](docs/03-deep-comparison/) (10 articles)
 
-对比 Claude Code 和 Codex 的实现方式
+Compare implementation approaches of Claude Code and Codex
 
-**五大机制对比**：
-- [13. 工具系统](docs/03-deep-comparison/13-mechanism-1-tools.md) - 52 vs 30 工具
-- [14. 循环机制](docs/03-deep-comparison/14-mechanism-2-loops.md) - AsyncGenerator vs Rust
-- [15. 上下文注入](docs/03-deep-comparison/15-mechanism-3-context.md) - CLAUDE.md vs config.toml
-- [16. System Prompt](docs/03-deep-comparison/16-mechanism-4-system-prompt.md) - 分段组装
-- [17. 自动压缩](docs/03-deep-comparison/17-mechanism-5-compression.md) - 本地 vs 远程
+**Five Mechanisms Comparison**:
+- [13. Tool System](docs/03-deep-comparison/13-mechanism-1-tools.md) - 52 vs 30 tools
+- [14. Loop Mechanism](docs/03-deep-comparison/14-mechanism-2-loops.md) - AsyncGenerator vs Rust
+- [15. Context Injection](docs/03-deep-comparison/15-mechanism-3-context.md) - CLAUDE.md vs config.toml
+- [16. System Prompt](docs/03-deep-comparison/16-mechanism-4-system-prompt.md) - Segmented assembly
+- [17. Auto Compression](docs/03-deep-comparison/17-mechanism-5-compression.md) - Local vs remote
 
-**系统设计对比**：
-- [18. 工具调度](docs/03-deep-comparison/18-tool-orchestration.md) - Amdahl 定律，90/10 规则
-- [19. 权限系统](docs/03-deep-comparison/19-permission-system.md) - 贝叶斯信任模型
-- [20. 重试与降级](docs/03-deep-comparison/20-retry-fallback.md) - 指数退避
-- [21. 成本控制](docs/03-deep-comparison/21-cost-control.md) - Prompt Cache
-- [22. 性能对比](docs/03-deep-comparison/22-performance.md) - TypeScript vs Rust
+**System Design Comparison**:
+- [18. Tool Orchestration](docs/03-deep-comparison/18-tool-orchestration.md) - Amdahl's law, 90/10 rule
+- [19. Permission System](docs/03-deep-comparison/19-permission-system.md) - Bayesian trust model
+- [20. Retry & Fallback](docs/03-deep-comparison/20-retry-fallback.md) - Exponential backoff
+- [21. Cost Control](docs/03-deep-comparison/21-cost-control.md) - Prompt Cache
+- [22. Performance](docs/03-deep-comparison/22-performance.md) - TypeScript vs Rust
 
-### [Part 4: 案例研究](docs/04-case-studies/) (3 篇)
+### [Part 4: Case Studies](docs/04-case-studies/) (3 articles)
 
-实战案例，学习如何构建特定类型的 Agent
+Real-world cases, learn how to build specific types of Agents
 
-- [23. 代码审查 Agent](docs/04-case-studies/23-code-review-agent.md) - 81% 准确率
-- [24. 测试生成 Agent](docs/04-case-studies/24-test-generation-agent.md) - 85%+ 覆盖率
-- [25. 重构 Agent](docs/04-case-studies/25-refactoring-agent.md) - 95% 成功率
+- [23. Code Review Agent](docs/04-case-studies/23-code-review-agent.md) - 81% accuracy
+- [24. Test Generation Agent](docs/04-case-studies/24-test-generation-agent.md) - 85%+ coverage
+- [25. Refactoring Agent](docs/04-case-studies/25-refactoring-agent.md) - 95% success rate
 
-### [Part 5: 总结](docs/05-summary/) (3 篇)
+### [Part 5: Summary](docs/05-summary/) (3 articles)
 
-总结核心洞察，指导实践
+Summarize core insights, guide practice
 
-- [26. 智能放大的本质](docs/05-summary/26-intelligence-amplification-essence.md) - 乘法 vs 加法
-- [27. 构建你自己的 Agent](docs/05-summary/27-build-your-own-agent.md) - 从 MVP 到生产级
-- [28. AI Agent 的未来](docs/05-summary/28-future-of-agents.md) - 下一个 10 倍在哪里
+- [26. Essence of Intelligence Amplification](docs/05-summary/26-intelligence-amplification-essence.md) - Multiplication vs addition
+- [27. Build Your Own Agent](docs/05-summary/27-build-your-own-agent.md) - From MVP to production
+- [28. Future of AI Agents](docs/05-summary/28-future-of-agents.md) - Where is the next 10x
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 理解智能本质（10 分钟）
+### 1. Understand Intelligence Essence (10 minutes)
 
-阅读前 3 篇文章，建立认知基础：
-- [什么是智能？](docs/00-cognitive-foundation/00-what-is-intelligence.md)
-- [Agent 智能的本质](docs/00-cognitive-foundation/01-agent-intelligence-essence.md)
-- [五大机制的深层原理](docs/00-cognitive-foundation/02-five-mechanisms-principles.md)
+Read first 3 articles to build cognitive foundation:
+- [What is Intelligence?](docs/00-cognitive-foundation/00-what-is-intelligence.md)
+- [Essence of Agent Intelligence](docs/00-cognitive-foundation/01-agent-intelligence-essence.md)
+- [Deep Principles of Five Mechanisms](docs/00-cognitive-foundation/02-five-mechanisms-principles.md)
 
-### 2. 从失败中学习（30 分钟）
+### 2. Learn from Failures (30 minutes)
 
-阅读失败案例，理解每个机制的必要性：
-- [没有工具](docs/01-failure-cases/03-without-tools.md) - 效率降低 10-20 倍
-- [没有循环](docs/01-failure-cases/04-without-loops.md) - 3272 失败案例
-- [没有上下文](docs/01-failure-cases/05-without-context.md) - 50% 返工率
+Read failure cases to understand necessity of each mechanism:
+- [Without Tools](docs/01-failure-cases/03-without-tools.md) - 10-20x efficiency drop
+- [Without Loops](docs/01-failure-cases/04-without-loops.md) - Case 3272 failure
+- [Without Context](docs/01-failure-cases/05-without-context.md) - 50% rework rate
 
-### 3. 构建你的 Agent（1 小时）
+### 3. Build Your Agent (1 hour)
 
-跟随教程，构建你的第一个 Agent：
-- [构建你自己的 Agent](docs/05-summary/27-build-your-own-agent.md) - 100 行代码的 MVP
+Follow tutorial to build your first Agent:
+- [Build Your Own Agent](docs/05-summary/27-build-your-own-agent.md) - 100-line MVP
 
-## 📊 数据亮点
+## 📊 Data Highlights
 
-### 智能放大效果
+### Intelligence Amplification Effect
 
-| 维度 | 无 Agent | 有 Agent | 提升 |
-|------|---------|---------|------|
-| 任务完成率 | 20% | 95% | **4.75x** |
-| 平均轮次 | 10 轮 | 3 轮 | **3.3x** |
-| 人工干预 | 100% | 5% | **20x** |
-| 总体效率 | 1x | 100x | **100x** |
+| Dimension | Without Agent | With Agent | Improvement |
+|-----------|---------------|------------|-------------|
+| Task Completion | 20% | 95% | **4.75x** |
+| Average Turns | 10 turns | 3 turns | **3.3x** |
+| Manual Intervention | 100% | 5% | **20x** |
+| Overall Efficiency | 1x | 100x | **100x** |
 
-### 成本优化
+### Cost Optimization
 
-| 策略 | 成本节省 | 实现难度 |
-|------|---------|---------|
-| Prompt Cache | 90% | 低 |
-| 自动压缩 | 75% | 中 |
-| 工具并发 | 50% | 高 |
+| Strategy | Cost Savings | Implementation Difficulty |
+|----------|--------------|--------------------------|
+| Prompt Cache | 90% | Low |
+| Auto Compression | 75% | Medium |
+| Tool Concurrency | 50% | High |
 
-### 性能对比
+### Performance Comparison
 
-| 项目 | 语言 | 代码量 | 速度 | 特点 |
-|------|------|--------|------|------|
-| Claude Code | TypeScript | 54 万行 | 1x | 功能丰富 |
-| Codex | Rust | 46 万行 | 1.5-2x | 性能优先 |
+| Project | Language | Lines of Code | Speed | Features |
+|---------|----------|---------------|-------|----------|
+| Claude Code | TypeScript | 540K | 1x | Feature-rich |
+| Codex | Rust | 467K | 1.5-2x | Performance-first |
 
-## 🎓 学习路径
+## 🎓 Learning Paths
 
-### 快速路径（2 小时）
-1. 认知基础（3 篇）
-2. 失败案例（5 篇）
-3. 构建 MVP（1 篇）
+### Fast Track (2 hours)
+1. Cognitive Foundation (3 articles)
+2. Failure Cases (5 articles)
+3. Build MVP (1 article)
 
-### 深度路径（10 小时）
-1. 认知基础（3 篇）
-2. 失败案例（5 篇）
-3. 设计决策（5 篇）
-4. 深度对比（10 篇）
-5. 案例研究（3 篇）
-6. 总结（3 篇）
+### Deep Dive (10 hours)
+1. Cognitive Foundation (3 articles)
+2. Failure Cases (5 articles)
+3. Design Decisions (5 articles)
+4. Deep Comparison (10 articles)
+5. Case Studies (3 articles)
+6. Summary (3 articles)
 
-### 实战路径（20+ 小时）
-- 完整阅读所有文章
-- 构建 3 个实战 Agent
-- 深入研究源码
+### Production Ready (20+ hours)
+- Read all articles
+- Build 3 real-world Agents
+- Deep dive into source code
 
-## 🔥 核心 Aha Moments
+## 🔥 Core Aha Moments
 
-1. **3272 失败案例** - 为什么需要断路器
-2. **信任的数学** - 10 次成功 vs 1 次失败
-3. **90/10 规则** - 90% 任务只用 10% 工具
-4. **最优并发点** - 不是越多越好，是 10
-5. **系统 > 模型** - GPT-3.5 + 系统 > GPT-4 单独
-6. **乘法 vs 加法** - 智能放大是相互增强
-7. **完整性 > 单点** - 木桶理论
-8. **下一个 10 倍** - 在系统，不在模型
+1. **Case 3272 Failure** - Why circuit breaker is needed
+2. **Mathematics of Trust** - 10 successes vs 1 failure
+3. **90/10 Rule** - 90% tasks use only 10% tools
+4. **Optimal Concurrency Point** - Not more is better, it's 10
+5. **System > Model** - GPT-3.5 + system > GPT-4 alone
+6. **Multiplication vs Addition** - Intelligence amplification is mutual enhancement
+7. **Completeness > Single Point** - Barrel theory
+8. **Next 10x** - In system, not in model
 
-## 🛠️ 技术栈对比
+## 🛠️ Tech Stack Comparison
 
 ### Claude Code
-- **语言**: TypeScript
-- **运行时**: Bun
-- **架构**: 分层架构（6 层）
-- **工具**: 52+ 个
-- **特点**: 企业级、功能丰富
+- **Language**: TypeScript
+- **Runtime**: Bun
+- **Architecture**: Layered (6 layers)
+- **Tools**: 52+
+- **Features**: Enterprise-grade, feature-rich
 
 ### Codex
-- **语言**: Rust
-- **架构**: 中心化核心
-- **工具**: 30+ 个（基于 Skills）
-- **特点**: 轻量级、高性能
+- **Language**: Rust
+- **Architecture**: Centralized core
+- **Tools**: 30+ (Skills-based)
+- **Features**: Lightweight, high-performance
 
-## 📈 项目统计
+## 📈 Project Stats
 
-- **总字数**: ~6 万字
-- **阅读时间**: ~15 小时
-- **文章数**: 28 篇
-- **代码示例**: 50+ 个
-- **对比表格**: 30+ 个
-- **数据点**: 100+ 个
+- **Total Words**: ~60K words
+- **Reading Time**: ~15 hours
+- **Articles**: 28
+- **Code Examples**: 50+
+- **Comparison Tables**: 30+
+- **Data Points**: 100+
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎贡献！
+Contributions welcome!
 
-- 🐛 报告问题
-- 💡 提出建议
-- 📝 改进文档
-- 🎨 分享你的 Agent
+- 🐛 Report bugs
+- 💡 Suggest ideas
+- 📝 Improve docs
+- 🎨 Share your Agent
 
-## 📄 许可证
+## 📄 License
 
-MIT License - 详见 [LICENSE](LICENSE)
+MIT License - see [LICENSE](LICENSE)
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
 - [Claude Code](https://github.com/anthropics/claude-code) by Anthropic
 - [Codex](https://github.com/openai/codex) by OpenAI
 
-## 📮 联系
+## 📮 Contact
 
-- GitHub Issues: [提问](https://github.com/defto-ai/buildagent/issues)
+- GitHub Issues: [Ask questions](https://github.com/defto-ai/buildagent/issues)
 - Website: [buildagent.dev](https://buildagent.dev)
 
 ---
 
-⭐ 如果这个项目对你有帮助，请给个 Star！
+⭐ If this project helps you, please star the repo!
 
-**记住**：未来不是等来的，是做出来的。现在就开始构建你的 Agent！
+**Remember**: The future is not waited for, it's built. Start building your Agent now!
