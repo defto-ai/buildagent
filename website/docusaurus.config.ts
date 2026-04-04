@@ -35,8 +35,15 @@ const config: Config = {
       'classic',
       {
         docs: {
+          // Source of truth is repo-root docs/; website/docs was only stubs.
+          path: '../docs',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/defto-ai/buildagent/tree/main/',
+          exclude: [
+            '**/WRITING_PLAN.md',
+            '**/PROJECT_PLAN.md',
+            '**/OUTLINE.md',
+          ],
         },
         blog: false,
         theme: {
