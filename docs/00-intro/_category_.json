@@ -1,0 +1,8 @@
+{
+  "label": "Introduction",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn why comparing two production codebases is the best way to master AI Agent engineering."
+  }
+}
