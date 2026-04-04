@@ -1,0 +1,8 @@
+{
+  "label": "深入对比",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Claude Code vs Codex 的完整技术对比"
+  }
+}
