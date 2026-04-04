@@ -1,0 +1,8 @@
+{
+  "label": "设计决策分析",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "基于代码证据分析设计决策的来源"
+  }
+}
