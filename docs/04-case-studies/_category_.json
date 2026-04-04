@@ -1,0 +1,8 @@
+{
+  "label": "实战案例",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "完整的 Agent 实现示例"
+  }
+}
