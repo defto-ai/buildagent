@@ -40,3 +40,7 @@ temp/
 # Coverage
 coverage/
 .nyc_output/
+
+# Private notes (personal strategy, not for public)
+private/
+scratch/

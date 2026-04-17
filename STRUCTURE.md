@@ -4,9 +4,6 @@
 buildagent/
 ├── README.md                    # English documentation
 ├── README.zh-CN.md              # Chinese documentation
-├── OUTLINE.md                   # Content outline
-├── PROJECT_PLAN.md              # Project plan
-├── WRITING_PLAN.md              # Writing plan
 ├── DEPLOYMENT.md                # Deployment guide
 │
 ├── docs/                        # Documentation source (used by Docusaurus)
@@ -58,9 +55,7 @@ buildagent/
 │       └── 28-future-of-agents.md
 │
 ├── examples/                    # Code examples
-│   ├── 01-minimal-agent/
-│   ├── 02-agent-with-tools/
-│   └── 03-agent-with-permissions/
+│   └── 01-minimal-agent/        # Minimal runnable agent (TypeScript)
 │
 └── website/                     # Docusaurus website
     ├── docusaurus.config.ts     # Docusaurus configuration
@@ -95,11 +90,6 @@ buildagent/
 - Docs source: `docs/` (repo root)
 - Website config: `website/docusaurus.config.ts`
 - Deployed to: buildagent.dev (Cloudflare Pages)
-
-### Planning Documents
-- `OUTLINE.md`: Detailed content outline
-- `PROJECT_PLAN.md`: Project planning and goals
-- `WRITING_PLAN.md`: Writing process and quality standards
 
 ## Navigation
 

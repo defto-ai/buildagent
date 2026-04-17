@@ -2,42 +2,29 @@
 
 [中文](README.zh-CN.md) | English
 
-> How to amplify LLM intelligence by 100x? We analyzed 1 million lines of code from Claude Code and Codex to find the answer.
+> A close reading of Claude Code (~540K LOC TypeScript) and Codex (~467K LOC Rust). What can we learn about building AI agents by studying these two production systems side-by-side?
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/website-buildagent.dev-green.svg)](https://buildagent.dev)
 
+> **Status**: Work in progress. Some articles are deep, some are stubs being filled in. Findings get published here as they're written.
+
 ## 🎯 What is this?
 
-**Claude Code** (Anthropic, 540K lines TypeScript) and **Codex** (OpenAI, 467K lines Rust) are the two most powerful AI Agent products.
+**Claude Code** (Anthropic, ~540K LOC TypeScript) and **Codex** (OpenAI, ~467K LOC Rust) are two of the most ambitious open coding-agent codebases shipped to date.
 
-We analyzed this 1 million lines of code line-by-line, revealing the secret of **how AI Agents amplify LLM intelligence by 100x**.
+This repo is a long-running effort to read both line by line and write down what's actually going on — the patterns, the trade-offs, and the design decisions that aren't obvious from using the tools.
 
-## 💡 Core Insights
+## 💡 Core Insights (so far)
 
-### Agent ≠ LLM
+A few things that became clear early:
 
-```
-ChatGPT: Can only "suggest", cannot "execute"
-Agent: Can independently complete full tasks
+1. **Agent ≠ LLM.** A model that suggests is a fundamentally different product from a system that executes. Most of the interesting engineering lives in that gap.
+2. **The bottleneck is the system, not the model.** Tools, loops, context, and prompt assembly often matter more than which model you call.
+3. **Intelligence amplification compounds, it doesn't add.** Each mechanism (tools × loops × context × prompt × compaction) multiplies the others — weakening any one drags the whole product down.
+4. **The next big improvements are in the system layer**, not the model layer.
 
-Gap: 100x efficiency
-```
-
-### Intelligence Amplification Formula
-
-```
-Agent Intelligence = LLM Intelligence × Tools × Loops × Context × System Prompt
-                   = 100 × 10 × 5 × 2 × 1.5
-                   = 15,000 points (150x amplification)
-```
-
-### Key Findings
-
-1. **Intelligence amplification is multiplication, not addition**
-2. **Bottleneck is system, not model**
-3. **GPT-3.5 + complete system > GPT-4 alone**
-4. **Next 10x is in system, not in model**
+These threads are explored in detail throughout the articles below.
 
 ## 📚 Documentation Structure
 
@@ -124,31 +111,21 @@ Read failure cases to understand necessity of each mechanism:
 Follow tutorial to build your first Agent:
 - [Build Your Own Agent](docs/05-summary/27-build-your-own-agent.md) - 100-line MVP
 
-## 📊 Data Highlights
+## 📊 At a Glance
 
-### Intelligence Amplification Effect
+A rough side-by-side. Numbers are based on the source trees we read; speed/feature characterizations are our impressions, not benchmarks.
 
-| Dimension | Without Agent | With Agent | Improvement |
-|-----------|---------------|------------|-------------|
-| Task Completion | 20% | 95% | **4.75x** |
-| Average Turns | 10 turns | 3 turns | **3.3x** |
-| Manual Intervention | 100% | 5% | **20x** |
-| Overall Efficiency | 1x | 100x | **100x** |
+| Project | Language | Lines of Code | Architecture | Tooling |
+|---------|----------|---------------|--------------|---------|
+| Claude Code | TypeScript | ~540K | Layered (≈6 layers) | 50+ built-in tools |
+| Codex | Rust | ~467K | Centralized core | ~30 tools, Skills-based |
 
-### Cost Optimization
+Recurring themes we keep coming back to (each gets its own article):
 
-| Strategy | Cost Savings | Implementation Difficulty |
-|----------|--------------|--------------------------|
-| Prompt Cache | 90% | Low |
-| Auto Compression | 75% | Medium |
-| Tool Concurrency | 50% | High |
-
-### Performance Comparison
-
-| Project | Language | Lines of Code | Speed | Features |
-|---------|----------|---------------|-------|----------|
-| Claude Code | TypeScript | 540K | 1x | Feature-rich |
-| Codex | Rust | 467K | 1.5-2x | Performance-first |
+- **Prompt cache** is the single biggest cost lever in both systems
+- **Auto-compaction** is what makes long sessions actually work
+- **Tool concurrency** is bounded by correctness, not by hardware
+- **Permission modeling** is more product design than security engineering
 
 ## 🎓 Learning Paths
 
@@ -196,14 +173,12 @@ Follow tutorial to build your first Agent:
 - **Tools**: 30+ (Skills-based)
 - **Features**: Lightweight, high-performance
 
-## 📈 Project Stats
+## 📈 Project Status
 
-- **Total Words**: ~60K words
-- **Reading Time**: ~15 hours
-- **Articles**: 28
-- **Code Examples**: 50+
-- **Comparison Tables**: 30+
-- **Data Points**: 100+
+- **Articles drafted**: 28 across 6 sections — some are deep dives, some are stubs being filled in
+- **Runnable examples**: 1 (TypeScript minimal agent), more on the roadmap
+- **Updates**: roughly weekly as new findings get written up
+- **What's missing**: most articles still need a second pass, more code citations, and runnable companion examples
 
 ## 🤝 Contributing
 
