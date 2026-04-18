@@ -45,3 +45,60 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+/* Sprint landing — Day 1 → Day 30 */
+.sprintHero {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.sprintBadge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ifm-color-primary-darker);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 999px;
+}
+
+[data-theme='dark'] .sprintBadge {
+  color: var(--ifm-color-primary-lighter);
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.sprintTitle {
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.sprintSubtitle {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.sprintNote {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+@media screen and (max-width: 996px) {
+  .sprintHero {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+
+  .sprintSubtitle br {
+    display: none;
+  }
+}
