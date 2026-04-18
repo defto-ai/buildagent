@@ -68,17 +68,27 @@ const config: Config = {
         alt: 'Build Agent Logo',
         src: 'img/logo.svg',
       },
+      hideOnScroll: false,
       items: [
+        // Sprint 期间隐藏 Docs 入口；Day 30 后恢复。
+        // {
+        //   type: 'docSidebar',
+        //   sidebarId: 'tutorialSidebar',
+        //   position: 'left',
+        //   label: 'Docs',
+        // },
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
+          href: 'https://x.com/KunhaiY',
+          label: '@KunhaiY',
+          position: 'right',
+          className: 'navbar-icon-x',
+          'aria-label': 'X (Twitter)',
         },
         {
           href: 'https://github.com/defto-ai/buildagent',
-          label: 'GitHub',
           position: 'right',
+          className: 'navbar-icon-github',
+          'aria-label': 'GitHub',
         },
       ],
     },
@@ -86,17 +96,12 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Learn',
+          title: 'Sprint',
           items: [
             {
-              label: 'Introduction',
-              to: '/docs/intro',
+              label: '关注 X · @KunhaiY',
+              href: 'https://x.com/KunhaiY',
             },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
             {
               label: 'GitHub',
               href: 'https://github.com/defto-ai/buildagent',
@@ -104,7 +109,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Build Agent. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Build Agent · 坤海 · AI Coding Agent 研究`,
     },
     prism: {
       theme: prismThemes.github,

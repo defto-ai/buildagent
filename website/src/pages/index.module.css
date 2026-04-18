@@ -1,14 +1,14 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * Homepage — Sprint landing
+ * 设计语言对齐 custom.css：Comfortaa heading + primary blue + 暗色 #0f172a。
  */
 
+/* === 共用 hero（保留向后兼容，Day 30 后还能复用） === */
 .heroBanner {
   padding: 6rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);
 }
 
 .heroBanner h1 {
@@ -46,59 +46,270 @@
   flex-wrap: wrap;
 }
 
-/* Sprint landing — Day 1 → Day 30 */
+/* === Sprint Hero === */
 .sprintHero {
   min-height: calc(100vh - var(--ifm-navbar-height));
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 4rem 0;
+  background:
+    radial-gradient(60% 80% at 50% 0%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0) 60%),
+    linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
+[data-theme='dark'] .sprintHero {
+  background:
+    radial-gradient(60% 80% at 50% 0%, rgba(96, 165, 250, 0.22) 0%, rgba(96, 165, 250, 0) 60%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+}
+
+.sprintContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+/* 背景：网格点阵 + 浮光斑 */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme='dark'] .bgGrid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
+
+.bgGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowFloat 8s ease-in-out infinite alternate;
+}
+
+[data-theme='dark'] .bgGlow {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.28), transparent 70%);
+}
+
+@keyframes glowFloat {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+  to   { transform: translate(-48%, -52%) scale(1.08); opacity: 1; }
+}
+
+/* 状态徽章 */
 .sprintBadge {
-  display: inline-block;
-  padding: 0.4rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
   margin-bottom: 2rem;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--ifm-color-primary-darker);
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.22);
   border-radius: 999px;
+  backdrop-filter: blur(8px);
 }
 
 [data-theme='dark'] .sprintBadge {
   color: var(--ifm-color-primary-lighter);
   background: rgba(96, 165, 250, 0.12);
-  border-color: rgba(96, 165, 250, 0.25);
+  border-color: rgba(96, 165, 250, 0.28);
 }
 
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* 标题 */
 .sprintTitle {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   margin-bottom: 1.75rem;
-  letter-spacing: -0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.4em;
 }
 
+.titleAccent {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 700;
+}
+
+.titleDivider {
+  color: var(--ifm-color-emphasis-500);
+  font-weight: 400;
+  margin: 0 -0.1em;
+}
+
+/* 副标题 */
 .sprintSubtitle {
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   line-height: 1.7;
+  color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme='dark'] .sprintSubtitle {
+  color: var(--ifm-color-emphasis-800);
+}
+
+.kw {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.92em;
+  padding: 0.1em 0.45em;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--ifm-color-primary-darker);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .kw {
+  background: rgba(96, 165, 250, 0.14);
+  color: var(--ifm-color-primary-lighter);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+/* CTA */
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: none;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.32);
+  color: #fff;
+}
+
+.ctaPrimary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.42);
+  color: #fff;
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
+}
+
+.ctaPrimary:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+.ctaIcon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/></svg>");
+}
+
+.ctaSecondary {
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--ifm-color-emphasis-900);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.ctaSecondary:hover {
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--ifm-color-emphasis-900);
+}
+
+[data-theme='dark'] .ctaSecondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ifm-color-emphasis-900);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .sprintNote {
-  margin-top: 2rem;
-  font-size: 0.95rem;
+  margin-top: 2.25rem;
+  font-size: 0.92rem;
   color: var(--ifm-color-emphasis-600);
+  letter-spacing: 0.01em;
 }
 
 @media screen and (max-width: 996px) {
   .sprintHero {
     min-height: auto;
-    padding: 3rem 1rem;
+    padding: 4rem 1.25rem 3.5rem;
   }
 
-  .sprintSubtitle br {
+  .sprintTitle {
+    flex-direction: column;
+    gap: 0.25em;
+  }
+
+  .titleDivider {
     display: none;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badgeDot,
+  .bgGlow {
+    animation: none;
+  }
+
+  .ctaArrow {
+    transition: none;
   }
 }
